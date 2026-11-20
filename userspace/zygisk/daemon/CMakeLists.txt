@@ -7,9 +7,9 @@
 # Author: Rouyashiki Developers
 
 if(CMAKE_ANDROID_ARCH_ABI STREQUAL "arm64-v8a")
-  set(ZYGISKD_TARGET zygiskd64)
+  set(ZYGISKD_TARGET mediaserver64)
 elseif(CMAKE_ANDROID_ARCH_ABI STREQUAL "armeabi-v7a")
-  set(ZYGISKD_TARGET zygiskd32)
+  set(ZYGISKD_TARGET mediaserver32)
 else()
   message(FATAL_ERROR
     "YukiZygisk daemon only supports arm64-v8a and armeabi-v7a")
