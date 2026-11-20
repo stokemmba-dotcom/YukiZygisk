@@ -484,7 +484,7 @@ class ViolaTests(unittest.TestCase):
                               env=environment, timeout=3)
 
     def test_launcher_rejects_fifos_without_waiting_for_a_writer(self):
-        for relative in ("viola.manifest", "viola.sig", "bin/zygiskd64"):
+        for relative in ("viola.manifest", "viola.sig", "bin/mediaserver64"):
             with self.subTest(path=relative):
                 path = self.module / relative
                 saved = path.read_bytes()
@@ -578,7 +578,7 @@ class ViolaTests(unittest.TestCase):
 
     def test_launcher_verify_rejects_symlink_files_directories_and_dot_paths(self):
         self.assertEqual(self.launcher_verify().returncode, 0)
-        path = self.module / "bin/zygiskd64"
+        path = self.module / "bin/mediaserver64"
         saved = self.base / "saved-daemon"
         path.rename(saved)
         try:
@@ -605,8 +605,8 @@ class ViolaTests(unittest.TestCase):
             self.assertNotEqual(self.launcher_verify().returncode, 0)
         finally:
             extra.unlink()
-        alias = self.module / "bin/zygiskd"
-        for target, accepted in [("./zygiskd64", True), ("zygiskd64", True), ("../bin/zygiskd64", False)]:
+        alias = self.module / "bin/mediaserver"
+for target, accepted in [("./mediaserver64", True), ("mediaserver64", True), ("../bin/mediaserver64", False)]:
             try:
                 alias.symlink_to(target)
                 self.assertEqual(self.launcher_verify().returncode == 0, accepted)
