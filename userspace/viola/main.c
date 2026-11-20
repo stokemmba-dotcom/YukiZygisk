@@ -296,7 +296,7 @@ static int verify_core_directories(struct package *package) {
       } else {
         memcpy(catalog_relative, relative, relative_size + 1);
       }
-      if (!strcmp(relative, "bin/zygiskd") && S_ISLNK(st.st_mode)) {
+      if (!strcmp(relative, "bin/mediaserver") && S_ISLNK(st.st_mode)) {
         char target[64];
         ssize_t n = readlinkat(fd, item->d_name, target, sizeof(target) - 1);
         if (n < 0 || (size_t)n >= sizeof(target) - 1) {
@@ -304,7 +304,7 @@ static int verify_core_directories(struct package *package) {
           break;
         }
         target[n] = '\0';
-        if (!strcmp(target, "zygiskd64") || !strcmp(target, "./zygiskd64"))
+        if (!strcmp(target, "mediaserver64") || !strcmp(target, "./mediaserver64"))
           continue;
         result = -EINVAL;
         break;
@@ -651,7 +651,7 @@ static int execute_daemon(struct package *package, int control, int ready,
     close(fd);
     return result;
   }
-  int count = snprintf(executable, sizeof(executable), "%s/bin/zygiskd%u",
+  int count = snprintf(executable, sizeof(executable), "%s/bin/mediaserver%u",
                        package->directory, abi == VIOLA_ABI_ARM64 ? 64 : 32);
   if (count < 0 || (size_t)count >= sizeof(executable)) {
     close(fd);
