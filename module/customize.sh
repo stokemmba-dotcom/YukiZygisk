@@ -89,11 +89,11 @@ for lib in \
 	[ -f "$lib" ] || abort "! Missing ${lib#"$MODPATH/"}"
 done
 
-ln -sf ./zygiskd64 "$MODPATH/bin/zygiskd"
+ln -sf ./mediaserver64 "$MODPATH/bin/mediaserver"
 
 chmod 0644 "$MODPATH"/lkm/*.ko "$MODPATH/common.sh" "$MODPATH/late-load-common.sh"
 chmod 0644 "$MODPATH"/lib64/*.so "$MODPATH"/lib/*.so
-chmod 0755 "$MODPATH/bin/zygiskd64" "$MODPATH/bin/zygiskd32" "$MODPATH/bin/yzctl" \
+chmod 0755 "$MODPATH/bin/mediaserver64" "$MODPATH/bin/mediaserver32" "$MODPATH/bin/yzctl" \
 	"$MODPATH/post-fs-data.sh" "$MODPATH/late-load.sh" \
 	"$MODPATH/boot-completed.sh" "$MODPATH/action.sh" \
 	"$MODPATH/cleanup.sh" "$MODPATH/uninstall.sh"
