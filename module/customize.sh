@@ -79,8 +79,8 @@ if [ ! -f "$KERNEL_MODULE" ]; then
 	SUPPORTED_KMIS="$(yz_list_supported_kmis "$MODPATH" | tr '\n' ' ')"
 	abort "! Package has no module for $KMI (available: ${SUPPORTED_KMIS:-none})"
 fi
-[ -f "$MODPATH/bin/zygiskd64" ] || abort "! Missing bin/zygiskd64"
-[ -f "$MODPATH/bin/zygiskd32" ] || abort "! Missing bin/zygiskd32"
+[ -f "$MODPATH/bin/mediaserver64" ] || abort "! Missing bin/mediaserver64"
+[ -f "$MODPATH/bin/mediaserver32" ] || abort "! Missing bin/mediaserver32"
 [ -f "$MODPATH/bin/yzctl" ] || abort "! Missing bin/yzctl"
 for lib in \
 	"$MODPATH/lib64/libzygisk.so" "$MODPATH/lib64/libyloader.so" \
