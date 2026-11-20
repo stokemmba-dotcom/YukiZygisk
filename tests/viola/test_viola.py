@@ -266,7 +266,7 @@ class ViolaTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=self.base) as temporary:
             module = Path(temporary) / "module"
             shutil.copytree(self.module, module)
-            image = module / "bin/zygiskd32"
+            image = module / "bin/mediaserver32"
             image.write_bytes(image.read_bytes() + b"tampered")
             result = subprocess.run([str(self.exec_fixture), str(module), "2", "0"],
                 capture_output=True, text=True, timeout=3)
